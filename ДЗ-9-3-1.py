@@ -24,18 +24,19 @@ def update_b2_label(event):
 
 def exchange():
     t_code = t_combobox.get()
-    b_code = b1_combobox.get()
+    b1_code = b1_combobox.get()
+    b2_code = b2_combobox.get()
 
-    if t_code and b_code:
+    if t_code and b1_code and b2_code:
         try:
-            response = requests.get(f'https://open.er-api.com/v6/latest/{b_code}')
-            response.raise_for_status()
-            data=response.json()
-            if t_code in data['rates']:
-                exchange_rate = data['rates'][t_code]
+            response1 = requests.get(f'https://open.er-api.com/v6/latest/{b1_code}')
+            response1.raise_for_status()
+            data1=response1.json()
+            if t_code in data1['rates']:
+                exchange_rate1 = data1['rates'][t_code]
                 t_name=cur[t_code]
-                b_name = cur[b_code]
-                mb.showinfo("Курс обмена", f"Курс: {exchange_rate:.2f} {t_name} за один {b_name}")
+                b1_name = cur[b1_code]
+                mb.showinfo("Курс обмена", f"Курс: {exchange_rate1:.2f} {t_name} за один {b1_name}")
             else:
                 mb.showerror("Ошибка", f"Валюта {t_code} не найдена!")
         except Exception as e:
