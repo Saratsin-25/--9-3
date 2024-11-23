@@ -54,7 +54,7 @@ cur = {
 
 window = Tk()
 window.title("Курсы обмена валют")
-window.geometry("360x300")
+window.geometry("360x400")
 
 Label(text="Базовая валюта").pack(padx=10, pady=10)
 b1_combobox = ttk.Combobox(values=list(cur.keys()))
